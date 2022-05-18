@@ -18,7 +18,7 @@ class Work(AnalyticMixin, metaclass=PoolMeta):
                     Eval('context', {}).get('company', -1),
                     Eval('company', -1))),
             ]
-        cls.analytic_accounts.depends.append('company')
+        cls.analytic_accounts.depends.add('company')
 
     def _get_invoice_line(self, key, invoice, lines):
         "Return a invoice line for the lines"
