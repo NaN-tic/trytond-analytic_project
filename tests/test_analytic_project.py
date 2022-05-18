@@ -19,8 +19,8 @@ def suite():
     suite = test_suite()
     suite.addTests(unittest.TestLoader().loadTestsFromTestCase(
             AnalyticProjectTestCase))
-    # suite.addTests(doctest.DocFileSuite('scenario_analytic_project.rst',
-    #         tearDown=doctest_teardown, encoding='utf-8',
-    #         checker=doctest_checker,
-    #         optionflags=doctest.REPORT_ONLY_FIRST_FAILURE))
+    suite.addTests(doctest.DocFileSuite('scenario_analytic_project.rst',
+            tearDown=doctest_teardown, encoding='utf-8',
+            checker=doctest_checker,
+            optionflags=doctest.REPORT_ONLY_FIRST_FAILURE))
     return suite

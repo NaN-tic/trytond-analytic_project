@@ -167,14 +167,24 @@ Invoice project up to yesterday::
     >>> project.save()
     >>> project.click('invoice')
     >>> project.amount_to_invoice
-    Decimal('40.00')
+    Decimal('0.00')
     >>> project.invoiced_amount
+    Decimal('60.00')
+
+    >>> project.project_invoice_timesheet_up_to = today
+    >>> project.save()
+    >>> project.amount_to_invoice
+    Decimal('40.00')
+
+    >>> Invoice = Model.get('account.invoice')
+    >>> invoice, = Invoice.find([])
+    >>> invoice.total_amount
     Decimal('60.00')
 
 Check Invoice Lines::
 
     >>> InvoiceLine = Model.get('account.invoice.line')
-    >>> line1, line2 = InvoiceLine.find([])
+    >>> line1, = InvoiceLine.find([])
     >>> len(line1.analytic_accounts) == 1
     True
     >>> analytic_account1, = line1.analytic_accounts
