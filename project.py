@@ -14,7 +14,7 @@ class Work(AnalyticMixin, metaclass=PoolMeta):
     def __setup__(cls):
         super().__setup__()
         cls.analytic_accounts.domain = [
-            ('company', '=', If(~Eval('company'),
+            ('company', '=', If(~Eval('company', -1),
                     Eval('context', {}).get('company', -1),
                     Eval('company', -1))),
             ]
